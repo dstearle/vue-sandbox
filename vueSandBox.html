@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+ 
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
+    crossorigin="anonymous">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
+    crossorigin="anonymous">
+  <link rel="stylesheet" href="css/style.css">
+  
+  <title>Vue Hello World!</title>
+  
+</head>
+
+<section>
+    
+    <div class="card">
+       
+       <div class="card-header bg-primary">
+           
+           <h3>Simple Output</h3>
+           
+       </div>
+        
+        <div class="card-body py-5">
+            
+            <div id="app">
+            
+                <p>{{ title }}</p>
+            
+            </div>
+            
+        </div>
+        
+    </div>
+    
+</section>
+
+<section>
+    
+    <div class="card">
+       
+       <div class="card-header">
+           
+           <h3>Simple Input</h3>
+           
+       </div>
+        
+        <div class="card-body py-5">
+            
+            <div id="app2">
+            
+                <input type="text" v-on:input="changeTitle">
+                
+                <p>{{ title }}</p>
+            
+            </div>
+            
+        </div>
+        
+    </div>
+    
+</section>
+
+<section>
+    
+    <div class="card">
+       
+       <div class="card-header">
+           
+           <h3>Simple Method</h3>
+           
+       </div>
+        
+        <div class="card-body py-5">
+            
+            <div id="app3">
+                
+                <p>{{ sayHello() }}</p>
+            
+            </div>
+            
+        </div>
+        
+    </div>
+    
+</section>
+
+<section>
+    
+    <div class="card">
+       
+       <div class="card-header">
+           
+           <h3>Simple Method With Link (Binding Attribute)</h3>
+           
+       </div>
+        
+        <div class="card-body py-5">
+            
+            <div id="app4">
+                
+                <p>
+                
+                    {{ sayHello() }} - <a v-bind:href="link">Google</a>
+                    
+                </p>
+            
+            </div>
+            
+        </div>
+        
+    </div>
+    
+</section>
+
+<body>
+
+<section>
+    
+    <div class="card">
+       
+       <div class="card-header">
+           
+           <h3>Preventing Override (V-Once)</h3>
+           
+       </div>
+        
+        <div class="card-body py-5">
+            
+            <div id="app5">
+               
+                <h4 v-once>{{ title }}</h4>
+                
+                <p>
+                
+                    {{ sayHello() }} - <a v-bind:href="link">Google</a>
+                    
+                </p>
+            
+            </div>
+            
+        </div>
+        
+    </div>
+    
+</section>
+
+<section>
+    
+    <div class="card">
+       
+       <div class="card-header">
+           
+           <h3>Output Raw HTML (V-HTML)</h3>
+           
+       </div>
+        
+        <div class="card-body py-5">
+            
+            <div id="app6">
+               
+                <h4 v-once>{{ title }}</h4>
+                
+                <p>
+                
+                    {{ sayHello() }} - <a v-bind:href="link">Google</a>
+                    
+                </p>
+                
+                <hr>
+                
+                <p v-html="finishedLink"></p>
+            
+            </div>
+            
+        </div>
+        
+    </div>
+    
+</section>
+
+<section>
+    
+    <div class="card">
+       
+       <div class="card-header">
+           
+           <h3>Simple Counters</h3>
+           
+       </div>
+        
+        <div class="card-body py-5">
+            
+            <div id="app7">
+             
+                <p>v-on:click="counter++</p>
+              
+                <button class="btn btn-primary text-white" v-on:click="counter++">Click Me!</button>
+                
+                <p>{{ counter }}</p>
+                
+                <hr>
+                
+                <p>v-on:click="increase"</p>
+               
+                <button class="btn btn-primary text-white" v-on:click="increase">Click Me!</button>
+                
+                <p>{{ counter }}</p>
+                
+                <hr>
+                
+                <p>Multiply by 2</p>
+               
+                <button class="btn btn-primary text-white" v-on:click="increase">Click Me!</button>
+                
+                <p>{{ counter * 2 }}</p>
+                
+                <hr>
+                
+                <p>Greater or Lesser than 10? (counter * 2)</p>
+               
+                <button class="btn btn-primary text-white" v-on:click="increase">Click Me!</button>
+                
+                <p>{{ counter * 2 > 10 ? 'Greater Than 10' : 'Smaller Than 10' }}</p>
+            
+            </div>
+            
+        </div>
+        
+    </div>
+    
+</section>
+
+<section>
+    
+    <div class="card">
+       
+       <div class="card-header">
+           
+           <h3>Find Mouse Coordinates (Event Object)</h3>
+           
+       </div>
+        
+        <div class="card-body py-5">
+            
+            <div id="app8">
+                
+                <p v-on:mousemove="updateCoordinates">Coordinates: {{ x }} / {{ y }}</p>
+            
+            </div>
+            
+        </div>
+        
+    </div>
+    
+</section>
+
+<section>
+    
+    <div class="card">
+       
+       <div class="card-header">
+           
+           <h3>Increase By Two (Pass Argument Through An Event)</h3>
+           
+       </div>
+        
+        <div class="card-body py-5">
+            
+            <div id="app9">
+               
+                <button class="btn btn-primary text-white" v-on:click="increase(2)">Click Me!</button>
+                
+                <p>{{ counter }}</p>
+            
+            </div>
+            
+        </div>
+        
+    </div>
+    
+</section>
+
+<section>
+    
+    <div class="card">
+       
+       <div class="card-header">
+           
+           <h3>Find Mouse Coordinates (Event Object)</h3>
+           
+       </div>
+        
+        <div class="card-body py-5">
+            
+            <div id="app10">
+                
+                <p v-on:mousemove="updateCoordinates">Coordinates: {{ x }} / {{ y }}</p>
+                
+                <span class="btn btn-danger mx-0" v-on:mousemove="dummy">DEAD SPOT</span>
+                
+                <hr>
+                
+                <p v-on:mousemove="updateCoordinates">Coordinates: {{ x }} / {{ y }}</p>
+                
+                <span class="btn btn-danger mx-0" v-on:mousemove.stop="">DEAD SPOT</span>
+            
+            </div>
+            
+        </div>
+        
+    </div>
+    
+</section>
+
+<section>
+    
+    <div class="card">
+       
+       <div class="card-header">
+           
+           <h3>Simple Keyborad Event</h3>
+           
+       </div>
+        
+        <div class="card-body py-5">
+            
+            <div id="app11">
+            
+                <input type="text" v-on:keyup.enter.space="alertMe">
+                
+                <p>Alerts user when either Enter or Spacebar are pressed</p>
+            
+            </div>
+            
+        </div>
+        
+    </div>
+    
+</section>
+
+<section>
+    
+    <div class="card">
+       
+       <div class="card-header">
+           
+           <h3>Update Name (Two Way Binding)</h3>
+           
+       </div>
+        
+        <div class="card-body py-5">
+            
+            <div id="app12">
+            
+                <input type="text" v-model="name">
+                
+                <p>{{ name }}</p>
+            
+            </div>
+            
+        </div>
+        
+    </div>
+    
+</section>
+
+<section>
+    
+    <div class="card">
+       
+       <div class="card-header">
+           
+           <h3>Increase / Decrease Counter (Computed Properties)</h3>
+           
+       </div>
+        
+        <div class="card-body py-5">
+            
+            <div id="app13">
+            
+                <button class="btn btn-success" v-on:click="counter++">Increase</button>
+                
+                <button class="btn btn-danger" v-on:click="counter--">Decrease</button>
+                
+                <button class="btn btn-warning" v-on:click="secondCounter++">Increase Second</button>
+                
+                <hr>
+                
+                <p>Counter: {{ counter }}</p>
+                
+                <p>Result: {{ result() }} | {{ output }}</p>
+            
+            </div>
+            
+        </div>
+        
+    </div>
+    
+</section>
+
+<section>
+    
+    <div class="card">
+       
+       <div class="card-header">
+           
+           <h3>Reset Counter To 0 After 2 Seconds (Using Watch)</h3>
+           
+       </div>
+        
+        <div class="card-body py-5">
+            
+            <div id="app14">
+            
+                <button class="btn btn-success" v-on:click="counter++">Increase</button>
+                
+                <button class="btn btn-danger" v-on:click="counter--">Decrease</button>
+                
+                <button class="btn btn-warning" v-on:click="secondCounter++">Increase Second</button>
+                
+                <hr>
+                
+                <p>Counter: {{ counter }}</p>
+                
+                <p>Result: {{ result() }} | {{ output }}</p>
+            
+            </div>
+            
+        </div>
+        
+    </div>
+    
+</section>
+
+<section>
+    
+    <div class="card">
+       
+       <div class="card-header">
+           
+           <h3>Dynamic CSS Styling (Click Below)</h3>
+           
+       </div>
+        
+        <div class="card-body py-5">
+            
+            <div id="app15">
+            
+                <div class="demo" @click="attachRed = !attachRed" :class="{red: attachRed}"></div>
+                
+                <div class="demo" @click="attachYellow = !attachYellow" :class="{yellow: attachYellow}"></div>
+                
+                <div class="demo" @click="attachBlue = !attachBlue" :class="{blue: attachBlue}"></div>
+            
+            </div>
+            
+            <hr>
+            
+            <div id="app16">
+            
+                <p>Example 2:</p>
+            
+                <div class="demo" @click="attachRed = !attachRed" :class="divClasses"></div>
+            
+            </div>
+            
+            <hr>
+            
+            <div id="app17">
+            
+                <p>Example 3 (Type In red, yellow, or blue):</p>
+            
+                <div class="demo" :class="color"></div>
+                
+                <input type="text" class="d-block" v-model="color">
+            
+            </div>
+            
+            <hr>
+            
+            <div id="app18">
+            
+                <p>Example 4 (Type In Color & Width):</p>
+            
+                <div class="demo" :style="myStyle"></div>
+                
+                <div>
+                    
+                    <input type="text" class="d-block-inline" v-model="color">
+                
+                    <input type="text" class="d-block-inline" v-model="width">
+                    
+                </div>
+            
+            </div>
+            
+            <hr>
+            
+            <div id="app19">
+            
+                <p>Example 5 Using An Array (Type In Color & Width):</p>
+            
+                <div class="demo" :style="[myStyle, {height: width + 'px'}]"></div>
+                
+                <div>
+                    
+                    <input type="text" class="d-block-inline" v-model="color">
+                
+                    <input type="text" class="d-block-inline" v-model="width">
+                    
+                </div>
+            
+            </div>
+            
+        </div>
+        
+    </div>
+    
+    <style>
+    
+        .demo {
+            
+            width: 100px;
+            height: 100px;
+            background-color: gray;
+            display: inline-block;
+            margin: 10px;
+            
+        }
+        
+        .red { background-color: red; }
+        
+        .yellow { background-color: yellow; }
+        
+        .blue { background-color: blue; }
+    
+    </style>
+    
+</section>
+
+<section>
+    
+    <div class="card">
+       
+       <div class="card-header bg-success">
+           
+           <h3>Show or Hide (v-if & v-else)</h3>
+           
+       </div>
+        
+        <div class="card-body py-5">
+            
+            <div id="app20">
+                
+                <p v-if="show">You can see me!</p>
+                
+                <p v-else>Now you see me!</p>
+                
+                <button class="btn btn-primary" @click="show = !show">Switch</button>
+            
+            </div>
+            
+        </div>
+        
+    </div>
+    
+</section>
+
+<section>
+    
+    <div class="card">
+       
+       <div class="card-header">
+           
+           <h3>Show or Hide (v-if wrapped in template tag)</h3>
+           
+       </div>
+        
+        <div class="card-body py-5">
+            
+            <div id="app21">
+                
+                <p v-if="show">You can see me!</p>
+                
+                <template v-if="show">
+                    
+                    <h1>Hi there!</h1>
+                    
+                    <p>This is all wrapped in a template tag!</p>
+                    
+                </template>
+                
+                <p v-else>Now you see me!</p>
+                
+                <button class="btn btn-primary" @click="show = !show">Switch</button>
+            
+            </div>
+            
+        </div>
+        
+    </div>
+    
+</section>
+
+<section>
+    
+    <div class="card">
+       
+       <div class="card-header">
+           
+           <h3>Show or Hide (Using v-show instead)</h3>
+           
+       </div>
+        
+        <div class="card-body py-5">
+            
+            <div id="app22">
+                
+                <p v-show="show">You can see me!</p>
+                
+                <button class="btn btn-primary" @click="show = !show">Switch</button>
+            
+            </div>
+            
+        </div>
+        
+    </div>
+    
+</section>
+
+<section>
+    
+    <div class="card">
+       
+       <div class="card-header">
+           
+           <h3>Rendering Lists From An Array (Using v-for)</h3>
+           
+       </div>
+        
+        <div class="card-body py-5">
+            
+            <div id="app23">
+                
+                <ul>
+                    
+                    <li v-for="ingredient in ingredients">{{ ingredient }}</li>
+                    
+                </ul>
+            
+            </div>
+            
+        </div>
+        
+    </div>
+    
+</section>
+
+<section>
+    
+    <div class="card">
+       
+       <div class="card-header">
+           
+           <h3>Getting The Index From An Array</h3>
+           
+       </div>
+        
+        <div class="card-body py-5">
+            
+            <div id="app24">
+                
+                <ul>
+                    
+                    <li v-for="(ingredient, i) in ingredients">{{ ingredient }} ({{ i }})</li>
+                    
+                </ul>
+            
+            </div>
+            
+        </div>
+        
+    </div>
+    
+</section>
+
+<section>
+    
+    <div class="card">
+       
+       <div class="card-header">
+           
+           <h3>Rendering Lists From An Array (Using a template tag)</h3>
+           
+       </div>
+        
+        <div class="card-body py-5">
+            
+            <div id="app25">
+                
+                <template v-for="(ingredient, i) in ingredients">
+                    
+                    <h4>{{ ingredient }}</h4>
+                    
+                    <p>{{ i }}</p>
+                    
+                </template>
+            
+            </div>
+            
+        </div>
+        
+    </div>
+    
+</section>
+
+<section>
+    
+    <div class="card">
+       
+       <div class="card-header">
+           
+           <h3>Looping Through Objects</h3>
+           
+       </div>
+        
+        <div class="card-body py-5">
+            
+            <div id="app26">
+                
+                <ul>
+                    
+                    <li v-for="person in persons">
+                        
+                        <span v-for="value in person">{{ value }}</span>
+                        
+                    </li>
+                    
+                </ul>
+            
+            </div>
+            
+            <hr>
+            
+            <div id="app27">
+               
+               <p>Example 2 (Using A Key):</p>
+                
+                <ul>
+                    
+                    <li v-for="person in persons">
+                        
+                        <span v-for="(value, key) in person">{{ key }} : {{ value }}</span>
+                        
+                    </li>
+                    
+                </ul>
+            
+            </div>
+            
+            <hr>
+            
+            <div id="app28">
+               
+               <p>Example 3 (Using A Key In A div):</p>
+                
+                <ul>
+                    
+                    <li v-for="person in persons">
+                        
+                        <div v-for="(value, key) in person">{{ key }} : {{ value }}</div>
+                        
+                    </li>
+                    
+                </ul>
+            
+            </div>
+            
+            <hr>
+            
+            <div id="app29">
+               
+               <p>Example 3 (Showing An Index):</p>
+                
+                <ul>
+                    
+                    <li v-for="person in persons">
+                        
+                        <div v-for="(value, key, i) in person">{{ key }} : {{ value }} ({{ i }})</div>
+                        
+                    </li>
+                    
+                </ul>
+            
+            </div>
+            
+            <hr>
+            
+            <div id="app30">
+               
+               <p>Example 4 (Looping Through Numbers):</p>
+                       
+               <span v-for="n in 10">{{ n }}</span>
+            
+            </div>
+            
+            <hr>
+            
+            <div id="app31">
+               
+               <p>Example 5 (Using push):</p>
+                
+                <ul>
+                    
+                    <li v-for="(ingredient, i) in ingredients">
+                        
+                        {{ ingredient }} ({{ i }})
+                        
+                    </li>
+                    
+                </ul>
+                
+                <button class="btn btn-primary" @click="ingredients.push('spices')" :key="ingredient">Add New Item</button>
+            
+            </div>
+            
+        </div>
+        
+    </div>
+    
+</section>
+
+<body>
+ 
+  <!-- START HERE -->
+
+
+  <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+  <script src="vueSandBox.js"></script>
+
+
+  <script>
+      
+    // Get the current year for the copyright
+    $('#year').text(new Date().getFullYear());
+      
+  </script>
+  
+</body>
+
+</html>
